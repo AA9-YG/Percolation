@@ -7,13 +7,12 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-
+        grid[row][col] = true;
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-
-        return false;
+        return grid[row][col];
     }
 
     // is the site (row, col) full?
