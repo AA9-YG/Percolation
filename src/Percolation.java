@@ -4,14 +4,21 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
 
-    boolean [][] grid;
+    boolean[][] grid;
+
     public Percolation(int n) {
-        grid = new boolean[n][n];
+        if (n > 0)
+            grid = new boolean[n][n];
+        else
+            throw new IllegalArgumentException("Grid size must be of at least 1-by-1 ");
     }
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        grid[row][col] = true;
+        if (row > 0 || col > 0)
+            grid[row - 1][col - 1] = true;
+        else
+            throw new IllegalArgumentException("Grid size must be of at least 1-by-1 ");
     }
 
     // is the site (row, col) open?
@@ -21,7 +28,9 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        if (isOpen(row, col)) {
 
+        }
         return false;
     }
 
@@ -31,7 +40,7 @@ public class Percolation {
 
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                if(grid[i][j]) {
+                if (grid[i][j]) {
                     counter++;
                 }
             }
@@ -41,7 +50,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        
+
         return false;
     }
 
