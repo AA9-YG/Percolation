@@ -23,12 +23,15 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        return grid[row][col];
+        if (row > 0 && col > 0)
+            return grid[row - 1][col - 1];
+        else
+            return false;
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        if (isOpen(row, col)) {
+        if (row > 0 && col > 0) {
 
         }
         return false;
