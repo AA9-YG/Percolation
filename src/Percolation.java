@@ -7,9 +7,17 @@ public class Percolation {
     boolean[][] grid;
 
     public Percolation(int n) {
-        if (n > 0)
+        if (n > 0) {
             grid = new boolean[n][n];
-        else
+
+            // Set initial values to false
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[i].length; j++) {
+                    grid[i][j] = false;
+                }
+            }
+
+        } else
             throw new IllegalArgumentException("Grid size must be of at least 1-by-1 ");
     }
 
@@ -26,7 +34,7 @@ public class Percolation {
         if ((row > 0 && col > 0) || (row <= grid.length && col <= grid.length))
             return grid[row - 1][col - 1];
 
-            return false;
+        return false;
     }
 
     // is the site (row, col) full?
@@ -73,8 +81,38 @@ public class Percolation {
         return false;
     }
 
+    public void printGrid() {
+        for (int i = 0; i < grid.length; i++) {
+            System.out.print("| ");
+
+            for (int j = 0; j < grid[i].length; j++) {
+                if(isOpen(i + 1,j + 1))
+                    System.out.print("T | ");
+                else
+                    System.out.print("F | ");
+            }
+
+            System.out.println();
+        }
+
+        System.out.println();
+    }
+
     // test client (optional)
     public static void main(String[] args) {
-        System.out.println("Hello");
+        Percolation percolation = new Percolation(5);
+        percolation.printGrid();
+
+        percolation.open(1,1);
+        percolation.open(1,2);
+        percolation.open(2,2);
+        percolation.open(3,2);
+        percolation.open(4,2);
+        percolation.open(5,2);
+        percolation.open(5,3);
+
+        percolation.printGrid();
+
     }
+
 }
