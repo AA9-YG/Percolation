@@ -30,10 +30,14 @@ public class Percolation {
     }
 
     // is the site (row, col) full?
-    public boolean isFull(int row, int col) {
-        if (row > 0 && col > 0) {
-
+    public boolean isFull(int row, int col) { // Corner cases
+        if (row == 1 && col == 1) {
+            return isOpen(row, col);
         }
+
+//        if ((row == 1 && col == grid.length) ||
+//                (row == grid.length && col == 1) || (row == grid.length && col == grid.length)))
+
         return false;
     }
 
